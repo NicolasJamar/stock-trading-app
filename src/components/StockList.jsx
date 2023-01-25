@@ -15,9 +15,13 @@ export const StockList = () => {
   }
 
   useEffect(() => {
+    //Possibility to catch the datas from setStock() before the component isMounted 
+    // so check if component isMounted
     let isMounted = true
     const fetchData = async () => {
       try {
+        //For multiple requests uses Promise.all() which tries to resolve all of them at the same time
+        //otherwise the requests are in a queue so takes more time for the network
         const responses = await Promise.all(
           watchList.map( symbol => {            
             return FinnHub.get("/quote", {
@@ -43,6 +47,8 @@ export const StockList = () => {
       }
     }
     fetchData()
+
+    return () => (isMounted = false)
   }, []);
 
   return(
