@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import {v4 as uuidv4} from 'uuid';
 import FinnHub from "../apis/FinnHub";
 
 export const AutoComplete = () => {
@@ -7,14 +8,12 @@ export const AutoComplete = () => {
 
   const renderDropdown = () => {
     let dropdownMenu= search ? "show" : null;
+    //console.log(uuidv4());
     return(
-      <ul className={`dropdown-menu ${dropdownMenu}`}>
-        {results.map( res => {
-          console.log(res.symbol)
+      <ul className={`dropdown-menu dropdown-custom ${dropdownMenu}`}>
+        {results.map( (res, index) => {
+          return (<li className="dropdown-item" key={uuidv4()}>{res.description} ({res.symbol})</li>)
         })}
-        <li>Stock 1</li>
-        <li>Stock 2</li>
-        <li>Stock 2</li>
       </ul>
     )
   }
