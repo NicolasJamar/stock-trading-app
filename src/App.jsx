@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useGlobalContext } from './context';
 import StockOverviewPage from "./pages/StockOverviewPage";
 import StockDetailPage from "./pages/StockDetailPage";
 import './App.css';
