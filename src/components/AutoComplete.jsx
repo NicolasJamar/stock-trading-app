@@ -1,18 +1,27 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import {v4 as uuidv4} from 'uuid';
 import FinnHub from "../apis/FinnHub";
+import { WatchListContext } from "../context/watchListContext";
 
 export const AutoComplete = () => {
   const [search, setSearch] = useState("");
   const [results, setResults] = useState([]);
+  const { addStock } = useContext(WatchListContext);
 
   const renderDropdown = () => {
-    let dropdownMenu= search ? "show" : null;
+    let dropdownMenu = search ? "show" : null;
     //console.log(uuidv4());
     return(
       <ul className={`dropdown-menu dropdown-custom ${dropdownMenu}`}>
         {results.map( (res, index) => {
-          return (<li className="dropdown-item" key={uuidv4()}>{res.description} ({res.symbol})</li>)
+          return (
+            <li className="dropdown-item" key={uuidv4()} onClick={() => {
+              addStock(res.symbol)
+              setSearch("")
+            }}>
+              {res.description} ({res.symbol})
+            </li>
+          )
         })}
       </ul>
     )
