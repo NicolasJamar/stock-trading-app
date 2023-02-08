@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import FinnHub from "../apis/FinnHub";
+import { StockChart } from "../components/StockChart";
 
 
 const formatData = (data) => {
@@ -68,16 +69,21 @@ function StockDetailPage() {
           week: formatData(responses[1].data),
           year: formatData(responses[2].data)
         })
+        console.log(chartData);
         
       } catch(error) {
         console.log(error)
       }
     }
     fetchData()
-  }, [])
+  }, [symbol])
+
+
 
   return(
-    <div>Stock Detail Page {symbol}</div>
+    <>
+      <div>Stock Detail Page {symbol}</div>
+    </>
   )
 }
 
