@@ -8,7 +8,7 @@ const formatData = (data) => {
   return data.t.map( (el, index) => {
     return {
      x: el * 1000, // time
-     y: data.c[index] // closure
+     y: Math.floor(data.c[index]) // closure
    }
   })
 }
@@ -16,8 +16,8 @@ const formatData = (data) => {
 
 function StockDetailPage() {
   //To use the symbol in url
+  const [chartData, setChartData] = useState();
   const {symbol} = useParams();
-  const [chartData, setChartData] = useState([]);
 
   useEffect( () => {
     const fetchData = async() => {

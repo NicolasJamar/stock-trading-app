@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import FinnHub from "../apis/FinnHub";
 import { BsFillCaretDownFill, BsFillCaretUpFill } from "react-icons/bs";
+import FinnHub from "../apis/FinnHub";
 import { WatchListContext } from "../context/watchListContext";
 
 export const StockList = () => {
