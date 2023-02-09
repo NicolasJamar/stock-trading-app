@@ -40,7 +40,6 @@ export const StockList = () => {
             symbol: resp.config.params.symbol
           }
         })
-        console.log(datas);
         
         if(isMounted) {
           setStock(datas);

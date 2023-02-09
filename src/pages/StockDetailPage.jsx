@@ -69,7 +69,6 @@ function StockDetailPage() {
           week: formatData(responses[1].data),
           year: formatData(responses[2].data)
         })
-        console.log(chartData);
         
       } catch(error) {
         console.log(error)
@@ -81,9 +80,14 @@ function StockDetailPage() {
 
 
   return(
-    <>
-      <div>Stock Detail Page {symbol}</div>
-    </>
+    <div>
+      <h1>Stock Detail Page {symbol}</h1>
+      {chartData && (
+        <div>
+          <StockChart chartData={chartData} symbol={symbol} />
+        </div>
+      )}
+    </div>
   )
 }
 
