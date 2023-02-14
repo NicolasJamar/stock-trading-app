@@ -81,8 +81,8 @@ function StockDetailPage() {
 
 
   return(
-    <div>
-      <h1>Stock Detail Page {symbol}</h1>
+    <div className="mt-4">
+      <a className="fw-semibold" href="/">back</a>
       {chartData && (
         <div>
           <StockChart chartData={chartData} symbol={symbol} />

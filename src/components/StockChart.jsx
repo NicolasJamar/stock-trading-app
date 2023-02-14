@@ -26,7 +26,7 @@ export const StockChart = ({chartData, symbol}) => {
       text: symbol,
       align: "center",
       style: {
-        fontSize: "24px"
+        fontSize: "34px"
       }
     },
     chart: {

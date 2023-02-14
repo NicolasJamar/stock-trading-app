@@ -1,22 +1,16 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 
 export const WatchListContext = createContext();
 
-const getWatchListFromLocalStorage = () => {
-  let favorites = localStorage.getItem("favorites");
-  if(favorites) {
-    favorites = JSON.parse(localStorage.getItem("favorites"))
-  } else {
-    favorites = null
-  }
-  return favorites
-} 
-
 export const WatchListContextProvider = props => {
-  //const [stock, setStock] = useState([]);
-  const [watchList, setWatchList] = useState(getWatchListFromLocalStorage);
+  const [watchList, setWatchList] = useState(
+    localStorage.getItem("watchList")?.split(",") || ["GOOGL", "AMZN", "MSTF"]
+  );
 
-  localStorage.setItem("watchList", JSON.stringify(watchList));
+  
+  useEffect(() => {
+    localStorage.setItem("watchList", watchList);
+  }, [watchList])
 
   const addStock = (stock) => {
     if(watchList.indexOf(stock) === -1) {

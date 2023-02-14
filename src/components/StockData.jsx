@@ -27,7 +27,7 @@ export const StockData = ({symbol}) => {
   }, [symbol])
 
   return(
-    <div>
+    <div className="stock-data">
       {stockData && (
         <div className="row border bg-white rounded shadow-sm p-4 mt-5">
           <div className="col">
@@ -69,7 +69,7 @@ export const StockData = ({symbol}) => {
             </div>
             <div>
               <span className="fw-bold">url: </span>
-              <a href="{stockData.weburl}">{stockData.weburl}</a>
+              <a href={stockData.weburl}>{stockData.weburl}</a>
             </div>
           </div>
         </div>

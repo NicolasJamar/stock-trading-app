@@ -4,6 +4,11 @@
   line-height: 100vh
 } */
 
+h1 {
+  text-align: center;
+  margin-top: 4rem;
+}
+
 .delete-button {
   visibility: hidden;
   display: inline-block;
@@ -22,4 +27,8 @@
 
 .chart-container {
   background-color: rgba(145, 158, 171, 0.04);
+}
+
+.stock-data {
+  margin-bottom: 5rem;
 }
